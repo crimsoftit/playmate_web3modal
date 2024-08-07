@@ -45,6 +45,18 @@ button {
   border: none
 }
 
+.ac_add {
+  font-size: 11px;
+  color: aquamarine;
+  font-style: italic;
+  font-family: "Public Sans", sans-serif;
+}
+
+.line {
+  width:62px;
+  color: aquamarine;
+}
+
 /* 
 ========================
       BUTTON ONE

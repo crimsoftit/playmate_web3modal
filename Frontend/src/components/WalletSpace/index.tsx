@@ -98,9 +98,13 @@ export default function WalletSpace() {
             
               isConnected
                 ? <div className="ac_address_box">
+                    
+                    
                     <p className="overflow_ellipsis">
                       { currentAccount }
                     </p>
+                    <hr className="line"></hr>
+                    <p className="ac_add">a/c address:</p>
                   </div>
                   
                 
