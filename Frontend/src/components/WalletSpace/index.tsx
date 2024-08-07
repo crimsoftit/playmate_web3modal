@@ -90,7 +90,7 @@ export default function WalletSpace() {
   
   if (currentAccount != null) {
     return (
-      <div className="box-3">
+      <div className="box_3">
           {
 
 
@@ -104,7 +104,7 @@ export default function WalletSpace() {
                   </div>
                   
                 
-                : <button disabled className="btn btn-three items-center justify-center   rounded-half bg-blue-high px-10 text-dim-black hover:bg-blue-high/80 md:w-auto" id="connectWalletBtn" onClick={ connectWallet }>
+                : <button disabled className="btn btn-three" id="connectWalletBtn" onClick={ connectWallet }>
                   <span className="wallet_address">{ currentAccount }</span>
                 </button>
             
