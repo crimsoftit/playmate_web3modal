@@ -1,0 +1,213 @@
+@tailwind components;
+
+@layer components {
+  #sidebar {
+    @apply w-64;
+    @apply border-r border-dim-black bg-sheet;
+    @apply px-10 pb-28 pt-6;
+  }
+
+  @media only screen and (max-width: theme("screens.desktop")) {
+    #sidebar {
+      @apply fixed -left-full top-0 h-screen bg-red-300;
+      @apply w-[75%] max-w-[24rem];
+      @apply border-none bg-grey-low;
+
+      @apply px-7 pb-16 pt-10;
+
+      @apply z-[3002];
+    }
+    #sidebar[data-app-open="true"] {
+      @apply left-0;
+    }
+
+    #sidebar {
+      height: var(--app-root-winh);
+    }
+  }
+
+  /* ================================ */
+
+  .sidelinks {
+    @apply relative flex flex-col gap-4;
+    /* @apply flex flex-col gap-10; */
+  }
+
+  .sidelinks a {
+    @apply flex items-center gap-x-4 whitespace-nowrap;
+    @apply font-medium transition-colors duration-75;
+    @apply text-grey-subtle hover:bg-blue-high/10;
+    @apply -mx-4 rounded-half px-4 py-3;
+  }
+  .sidelinks a.active {
+    @apply text-[#5CE5E2];
+  }
+
+  .sidelinks a:not(.active):hover {
+    @apply text-[#5CE5E2];
+  }
+}
+
+
+.btn {
+  line-height: 50px;
+  height: 50px;
+  text-align: center;
+  width: 200px;
+  cursor: pointer;
+}
+
+button {
+  background-color: transparent;
+  border: none
+}
+
+/* 
+========================
+      BUTTON ONE
+========================
+*/
+.btn-one {
+  color: #FFF;
+  transition: all 0.3s;
+  position: relative;
+}
+.btn-one span {
+  transition: all 0.3s;
+}
+.btn-one::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255,255,255,0.5);
+  border-bottom-color: rgba(255,255,255,0.5);
+  transform: scale(0.1, 1);
+}
+.btn-one:hover span {
+  letter-spacing: 2px;
+}
+.btn-one:hover::before {
+  opacity: 1; 
+  transform: scale(1, 1); 
+}
+.btn-one::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: rgba(255,255,255,0.1);
+}
+.btn-one:hover::after {
+  opacity: 0; 
+  transform: scale(0.1, 1);
+}
+
+
+/* 
+========================
+      BUTTON TWO
+========================
+*/
+.btn-two {
+  color: #FFF;
+  transition: all 0.5s;
+  position: relative; 
+}
+.btn-two span {
+  z-index: 2; 
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%; 
+}
+.btn-two::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.5s;
+  border: 1px solid rgba(255,255,255,0.2);
+  background-color: rgba(255,255,255,0.1);
+}
+.btn-two::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.5s;
+  border: 1px solid rgba(255,255,255,0.2);
+  background-color: rgba(255,255,255,0.1);
+}
+.btn-two:hover::before {
+  transform: rotate(-45deg);
+  background-color: rgba(255,255,255,0);
+}
+.btn-two:hover::after {
+  transform: rotate(45deg);
+  background-color: rgba(255,255,255,0);
+}
+
+
+/* 
+========================
+      BUTTON THREE
+========================
+*/
+.btn-three {
+  color: #FFF;
+  transition: all 0.5s;
+  position: relative;
+  background-color: grey;
+}
+.btn-three::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255,255,255,0.1);
+  transition: all 0.3s;
+}
+.btn-three:hover::before {
+  opacity: 0 ;
+  transform: scale(0.5,0.5);
+}
+.btn-three::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(255,255,255,0.5);
+  transform: scale(1.2,1.2);
+}
+.btn-three:hover::after {
+  opacity: 1;
+  transform: scale(1,1);
+}
