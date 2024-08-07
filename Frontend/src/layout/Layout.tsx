@@ -14,66 +14,36 @@ import profileImg from "assets/profile.jpg";
 import Hamburger from "assets/hamburger.svg";
 import { useMenu } from "utils";
 import * as icons from "./icons";
+import WalletSpace from "../components/WalletSpace/index.tsx";
 
 
 
 
-import Web3Modal, { getChainId } from "web3modal";
-import { DiscoverWalletProviders } from '../components/DiscoverWalletProviders';
-import WalletConnectProvider from "@walletconnect/web3-provider";
-import WalletLink from "walletlink";
-import WalletSdk from "@coinbase/wallet-sdk";
-
-import { binancechainwallet, walletconnect } from "web3modal/dist/providers/connectors";
-import Web3 from "web3";
 
 
-var currentAccount: string | null = null;
-var contract = null;
 
 
-const providerOptions = {
-  binancechainwallet: {
-    package: true
-  },
-  walletconnect: {
-    package: WalletConnectProvider,
-    options: {
-      infuraId: "6ef9d3faf7dd490caf9b73a23fcfc95e"
-    }
-  },
-  walletlink: {
-    package: WalletLink,
-    options: {
-      appName: 'Playmate',
-      infuraId: "80033cb80b9440eab66ad185c32f2163",
-      rpc: "",
-      //getChainId: 1,
-      chainId: 1, // -- eth mainnet
-      //chainId: 4, // -- rinkeby
-      appLogoUrl: null,
-      darkmode: true,
-    }
-  },
-};
 
 
-const web3Modal = new Web3Modal (
-  {
-    network: "rinkeby",
-    theme: "dark",
-    cacheProvider: true,
-    providerOptions
-  }
-);
 
-async function connectWallet() {
-  var provider = await web3Modal.connect();
-  var web3 = new Web3(provider);
-  await window.ethereum.send('eth_requestAccounts');
-  var accounts = await web3.eth.getAccounts();
-  currentAccount = accounts[0];
-}
+// async function connectWallet(): Promise<void> {
+//   var provider = await web3Modal.connect();
+//   var web3 = new Web3(provider);
+
+//   (window as any).ethereum.request({
+//     method: 'eth_requestAccounts',
+//   }).then ((accounts : string[]) => {
+//     currentAccount = accounts[0];
+//     //setIsConnected(true);
+//     document.querySelector('.wallet_address')!.textContent = accounts[0];
+//     //document.getElementById('')!.textContent = currentAccount;
+//   }).catch ((error: any) => {
+//     alert (`ethereum account connection error: ${error}`);
+//   });
+
+  
+  
+// }
 
 
 
@@ -161,6 +131,14 @@ function UserProfile({userData} : any) {
 }
 
 export function Layout() {
+
+
+  
+
+
+
+
+
   let [open, setOpen] = React.useState(false);
 
   const [loaded, setLoaded] = useState(false);    
@@ -170,6 +148,8 @@ export function Layout() {
   const [friendRequests, setFriendRequests] = useState([]);
 
   const [admin, setAdmin] = useState(false);
+
+
 
   useEffect(() => {
       fetch("http://127.0.0.1:5000/getUserData", {
@@ -282,21 +262,17 @@ function ContentPane({ setOpen, userData, events, friendRequests }: any) {
   const [actions, setActions] = React.useState<React.ReactNode>(null);
   const [notifications, setNotifications] = useState([]);
 
-  useEffect(() => {
-    // Set type in events array to "eventInvite"
-    events.forEach((event: any) => {
-      event.type = "eventInvite";
-    });
+
+
+
+
+
+
+
+
+
+
   
-    // Set type in friend requests array to "friendRequest"
-    friendRequests.forEach((friendRequest: any) => {
-      friendRequest.type = "friendRequest";
-    });
-  
-    // Combine events and friend requests into notifications array
-    let notificationsTemp = events.concat(friendRequests);
-    setNotifications(notificationsTemp)
-  }, [events, friendRequests])
 
   return (
     <section className='flex max-h-full min-h-full min-w-0 max-w-full flex-1 flex-col overflow-y-auto overflow-x-hidden bg-sheet desktop:overflow-y-hidden'>
@@ -327,18 +303,7 @@ function ContentPane({ setOpen, userData, events, friendRequests }: any) {
 
 
 
-          <div className="box-3">
-            {
-              currentAccount != null ? (
-                <div>
-                  connected
-                </div>
-              ) : <button className="btn btn-three items-center justify-center rounded-half bg-blue-high px-10 text-dim-black hover:bg-blue-high/80 md:w-auto" id="connectWalletBtn" onClick={ connectWallet }>
-              <span>Connect Wallet</span>
-            </button>
-            }
-            
-          </div>
+          <WalletSpace />
 
 
 
